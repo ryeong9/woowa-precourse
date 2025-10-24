@@ -23,8 +23,9 @@ describe('입력 문자열 파싱', () => {
     expect(() => parseInput('pobi,,woni')).toThrow('[ERROR] 자동차 이름 사이에 빈 값이 있습니다.');
   });
 
-  test('쉼표가 아닌 다른 구분자 사용 시 예외 발생', () => {
-    expect(() => parseInput('pobi|woni')).toThrow('[ERROR] 자동차 이름은 쉼표(,)로만 구분해야 합니다.');
+  test('쉼표가 없으면 전체를 하나의 이름으로 인식한다', () => {
+    expect(parseInput('pobi|')).toEqual(['pobi|']);
+    expect(parseInput('wo@ni')).toEqual(['wo@ni']);
   });
 
   test('각 이름의 앞뒤 공백은 제거되어야 한다.', () => {
