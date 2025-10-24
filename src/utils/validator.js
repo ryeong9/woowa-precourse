@@ -10,3 +10,24 @@ export function validateCarNames(names) {
     throw new Error(ERROR_MESSAGES.INVALID_DUPLICATION);
   }
 }
+
+
+export function validateTryCount(input) {
+  const trimmed = input.trim();
+
+  if (trimmed.length === 0) {
+    throw new Error(ERROR_MESSAGES.INVALID_TRY_COUNT);
+  }
+
+  const count = Number(trimmed);
+
+  if (!Number.isInteger(count)) {
+    throw new Error(ERROR_MESSAGES.INVALID_TRY_COUNT);
+  }
+
+  if (count <= 0) {
+    throw new Error(ERROR_MESSAGES.INVALID_TRY_COUNT);
+  }
+
+  return count;
+}
