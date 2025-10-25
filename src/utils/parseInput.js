@@ -1,6 +1,6 @@
-import { ERROR_MESSAGES } from '../constants/errorMessages.js';
+import ERROR_MESSAGES from '../constants/errorMessages.js';
 
-export default function parseInput(input) {
+const parseInput = function parseInput(input) {
   if (!input || input.trim().length === 0) {
     throw new Error(ERROR_MESSAGES.INVALID_EMPTY);
   }
@@ -12,4 +12,6 @@ export default function parseInput(input) {
   }
 
   return names;
-}
+};
+
+export default parseInput;
