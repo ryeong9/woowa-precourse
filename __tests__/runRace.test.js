@@ -12,10 +12,10 @@ describe('레이싱 도메인 검증', () => {
     const carNameList = ['pobi', 'woni', 'jun'];
     const tryCount = 1;
 
-    const { roundResults, cars } = runRace(carNameList, tryCount, randomNumberGenerator);
+    const { roundHistory, cars } = runRace(carNameList, tryCount, randomNumberGenerator);
 
-    expect(roundResults).toHaveLength(1);
-    expect(roundResults[0].map((car) => car.position)).toEqual([1, 0, 1]);
+    expect(roundHistory).toHaveLength(1);
+    expect(roundHistory[0].map((car) => car.position)).toEqual([1, 0, 1]);
     expect(cars.map((car) => car.position)).toEqual([1, 0, 1]);
     expect(randomNumberGenerator).toHaveBeenCalledTimes(3);
   });
@@ -33,9 +33,9 @@ describe('레이싱 도메인 검증', () => {
     const carNameList = ['pobi', 'woni', 'jun'];
     const tryCount = 3;
 
-    const { roundResults, cars } = runRace(carNameList, tryCount, randomNumberGenerator);
+    const { roundHistory, cars } = runRace(carNameList, tryCount, randomNumberGenerator);
 
-    expect(roundResults).toHaveLength(3);
+    expect(roundHistory).toHaveLength(3);
     expect(cars.map((car) => car.position)).toEqual([3, 0, 3]);
     expect(randomNumberGenerator).toHaveBeenCalledTimes(9);
   });

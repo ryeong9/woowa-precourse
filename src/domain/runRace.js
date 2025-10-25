@@ -25,13 +25,13 @@ const moveCarsOneRound = function moveCarsOneRound(cars, randomNumberGenerator) 
 
 const runRace = function runRace(carNames, tryCount, randomNumberGenerator = generateRandomNumber) {
   let cars = createCarStates(carNames);
-  const roundResults = [];
+  const roundHistory = [];
 
   for (let i = 0; i < tryCount; i += 1) {
     cars = moveCarsOneRound(cars, randomNumberGenerator);
-    roundResults.push(cars);
+    roundHistory.push(cars);
   }
-  return { cars, roundResults };
+  return { cars, roundHistory };
 };
 
 export default runRace;
