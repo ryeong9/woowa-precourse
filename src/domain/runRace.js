@@ -7,7 +7,7 @@ const shouldMove = function shouldMove(randomNumber) {
   return false;
 };
 
-const createCarStates = function createCars(carNames) {
+const createCarStates = function createCarStates(carNames) {
   return carNames.map((name) => ({ name, position: 0 }));
 };
 
