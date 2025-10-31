@@ -23,6 +23,10 @@ const parsePurchaseInput = function parsePurchaseInput(rawInput) {
 const parseWinningNumberInput = function parseWinningNumberInput(rawInput) {
   const trimmedInput = requireNonEmpty(rawInput);
 
+  if (/(?<=\d)\s*([^\d\s,])\s*(?=\d)/gu.test(trimmedInput)) {
+    throw new Error(LOTTO_ERROR_MESSAGES.INVALID_DELIMITER);
+  }
+
   const tokens = trimmedInput.split(',').map((token) => token.trim());
 
   if (tokens.some((token) => token === '')) {
