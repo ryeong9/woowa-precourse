@@ -29,6 +29,12 @@ describe('당첨 번호 문자열 파싱', () => {
     expect(parseWinningNumberInput(input)).toEqual(expected);
   });
 
+  test.each(['1|2|3|4|5|6', '1;2;3;4;5;6', '1:2:3:4:5:6', '1/2/3/4/5/6'])(
+    '쉼표 아닌 구분자: "%s"',
+    (input) => {
+      expect(() => parseWinningNumberInput(input)).toThrow(LOTTO_ERROR_MESSAGES.INVALID_DELIMITER);
+    },
+  );
   test.each(['1,,3,4,5,6', ',2,3,4,5,6', '1,2,3,4,5,'])('형식 오류: "%s"', (input) => {
     expect(() => parseWinningNumberInput(input)).toThrow(LOTTO_ERROR_MESSAGES.INVALID_FORMAT);
   });
