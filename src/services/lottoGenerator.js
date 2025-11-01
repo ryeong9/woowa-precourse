@@ -6,9 +6,9 @@ const pickNumbers = function pickNumbers(rand = Random) {
   return rand.pickUniqueNumbersInRange(LOTTO.MIN, LOTTO.MAX, LOTTO.COUNT);
 };
 
-const issueLotto = (amount, rand = Random) => {
+const issueLotto = function issueLotto(amount, rand = Random) {
   const count = amount / LOTTO.PRICE;
   return Array.from({ length: count }, () => new Lotto(pickNumbers(rand)));
 };
 
-export { issueLotto };
+export default { issueLotto };
