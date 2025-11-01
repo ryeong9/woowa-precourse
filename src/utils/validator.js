@@ -33,7 +33,7 @@ const validatePurchaseAmount = function validatePurchaseAmount(number) {
   }
 };
 
-const validateWinningNumbers = function validateWinningNumbers(winningNumbers) {
+const validateLottoNumbers = function validateLottoNumbers(winningNumbers) {
   if (winningNumbers.length !== LOTTO.COUNT) {
     throw new Error(LOTTO_ERROR_MESSAGES.INVALID_LENGTH);
   }
@@ -59,4 +59,4 @@ const validateBonusNumber = function validateBonusNumber(bonusNumber, winningNum
   }
 };
 
-export { validatePurchaseAmount, validateWinningNumbers, validateBonusNumber };
+export { validatePurchaseAmount, validateLottoNumbers, validateBonusNumber };

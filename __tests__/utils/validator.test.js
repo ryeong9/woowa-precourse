@@ -7,7 +7,7 @@ import {
 import {
   validateBonusNumber,
   validatePurchaseAmount,
-  validateWinningNumbers,
+  validateLottoNumbers,
 } from '../../src/utils/validator.js';
 
 describe('구매 금액 검증', () => {
@@ -35,7 +35,7 @@ describe('당첨 번호 검증', () => {
   test.each([{ numbers: [1, 2, 3, 4, 5, 6] }, { numbers: [7, 11, 16, 35, 36, 44] }])(
     '당첨 번호 정상: $numbers',
     ({ numbers }) => {
-      expect(() => validateWinningNumbers(numbers)).not.toThrow();
+      expect(() => validateLottoNumbers(numbers)).not.toThrow();
     },
   );
 
@@ -43,25 +43,23 @@ describe('당첨 번호 검증', () => {
     [1, 2, 3, 4, 5],
     [1, 2, 3, 4, 5, 6, 7],
   ])('번호가 6개가 아니면 예외 처리: %p', (...numbers) => {
-    expect(() => validateWinningNumbers(numbers)).toThrow(LOTTO_ERROR_MESSAGES.INVALID_LENGTH);
+    expect(() => validateLottoNumbers(numbers)).toThrow(LOTTO_ERROR_MESSAGES.INVALID_LENGTH);
   });
   test('번호 중복이면 예외 처리', () => {
-    expect(() => validateWinningNumbers([1, 1, 3, 4, 5, 6])).toThrow(
-      LOTTO_ERROR_MESSAGES.DUPLICATED,
-    );
+    expect(() => validateLottoNumbers([1, 1, 3, 4, 5, 6])).toThrow(LOTTO_ERROR_MESSAGES.DUPLICATED);
   });
   test('범위를 벗어나면 예외 처리', () => {
-    expect(() => validateWinningNumbers([1, 2, 3, 4, 5, 46])).toThrow(
+    expect(() => validateLottoNumbers([1, 2, 3, 4, 5, 46])).toThrow(
       LOTTO_ERROR_MESSAGES.OUT_OF_RANGE,
     );
   });
   test('정수가 아니면 예외 처리', () => {
-    expect(() => validateWinningNumbers([1, 2, 3, 4, 5, 6.5])).toThrow(
+    expect(() => validateLottoNumbers([1, 2, 3, 4, 5, 6.5])).toThrow(
       COMMON_ERROR_MESSAGES.NOT_INTEGER,
     );
   });
   test('0 이하면 예외 처리', () => {
-    expect(() => validateWinningNumbers([1, 2, 3, 4, 5, -1])).toThrow(
+    expect(() => validateLottoNumbers([1, 2, 3, 4, 5, -1])).toThrow(
       COMMON_ERROR_MESSAGES.INVALID_NEGATIVE_OR_ZERO,
     );
   });
