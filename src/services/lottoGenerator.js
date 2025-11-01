@@ -11,4 +11,4 @@ const issueLotto = function issueLotto(amount, rand = Random) {
   return Array.from({ length: count }, () => new Lotto(pickNumbers(rand)));
 };
 
-export default { issueLotto };
+export default issueLotto;

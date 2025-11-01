@@ -1,5 +1,5 @@
 import { LOTTO } from '../../src/constants/rules.js';
-import { issueLotto } from '../../src/services/lottoGenerator.js';
+import issueLotto from '../../src/services/lottoGenerator.js';
 
 describe('로또 생성', () => {
   test('금액에 맞춰 N장 발급 + 오름차순 정렬', () => {
