@@ -1,4 +1,5 @@
 import { PRIZE, RANK } from '../constants/rules.js';
+import asLottoNumbers from '../utils/asLottoNumbers.js';
 import judgeResult from './judgeResult.js';
 
 const createEmptyRankCounts = function createEmptyRankCounts() {
@@ -9,16 +10,6 @@ const createEmptyRankCounts = function createEmptyRankCounts() {
     [RANK.FOURTH]: 0,
     [RANK.FIFTH]: 0,
   };
-};
-
-const asLottoNumbers = function asLottoNumbers(lotto) {
-  if (Array.isArray(lotto)) {
-    return lotto;
-  }
-  if (lotto && typeof lotto.getNumbers === 'function') {
-    return lotto.getNumbers();
-  }
-  return [];
 };
 
 const addIfRank = function addIfRank(state, rank) {
