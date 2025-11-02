@@ -1,3 +1,19 @@
 const LOTTO = { MIN: 1, MAX: 45, COUNT: 6, PRICE: 1000 };
 
-export { LOTTO };
+const RANK = {
+  FIRST: 1,
+  SECOND: 2,
+  THIRD: 3,
+  FOURTH: 4,
+  FIFTH: 5,
+};
+
+const PRIZE = {
+  [RANK.FIRST]: 2_000_000_000,
+  [RANK.SECOND]: 30_000_000,
+  [RANK.THIRD]: 1_500_000,
+  [RANK.FOURTH]: 50_000,
+  [RANK.FIFTH]: 5_000,
+};
+
+export { LOTTO, RANK, PRIZE };
