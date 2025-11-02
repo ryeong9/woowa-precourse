@@ -1,5 +1,20 @@
 # javascript-lotto-precourse
 
+## 로또
+
+### 📋 요구사항 정리
+
+- 구입 금액을 입력받아 1,000원당 1장씩 로또를 발행한다.
+- 한 장은 1~45 범위의 중복 없는 6개 숫자로 구성되며, 오름차순으로 출력한다.
+- 당첨 번호 6개(쉼표 구분)와 보너스 번호 1개를 입력받는다.
+- 등수/상금: 1등(6개) 2,000,000,000원 · 2등(5+보너스) 30,000,000원 · 3등(5개) 1,500,000원 · 4등(4개) 50,000원 · 5등(3개) 5,000원.
+- 잘못된 입력은 "[ERROR]"로 시작하는 메시지를 출력하고 해당 단계부터 재입력한다.
+- 수익률은 반올림하여 소수점 첫째 자리까지 표기한다.
+- Node.js 22.19.0 환경에서 실행 가능
+- `@woowacourse/mission-utils`의 Random/Console 사용
+
+---
+
 ### ✅ 기능
 
 **1. 구매 금액 입력**
@@ -56,7 +71,54 @@
 - 당첨 번호 / 보너스 번호 공통
   - 1~45 사이의 숫자가 아닐 경우 `[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.` 에러 발생.
 
-**8. 테스트 코드 작성**
+**9. 테스트 코드 작성**
 
 - 숫자 생성, 매칭, 통계, 수익률 등 단위 테스트 구현한다.
 - 테스트 기반 개발(TDD)로 기능 단위 구현 및 리팩터링
+
+---
+
+### 📂 폴더 구조
+
+```plaintext
+📦 src
+┣ 📂 constants
+┃ ┣ 📜 errorMessages.js     # 에러 메시지 상수 모음
+┃ ┗ 📜 rules.js             # 로또 규칙
+┣ 📂 domain
+┃ ┗ 📜 Lotto.js             # 로또 도메인
+┣ 📂 services
+┃ ┣ 📜 judgeResult.js       # 등수 판정
+┃ ┣ 📜 lottoGenerator.js    # 로또 발행
+┃ ┗ 📜 statistics.js        # 등수 집계/총 상금/수익률 계산
+┣ 📂 utils
+┃ ┣ 📜 asLottoNumbers.js    # Lotto/배열 → 숫자배열
+┃ ┣ 📜 format.js            # 출력 포맷
+┃ ┣ 📜 parser.js            # 문자열 파싱
+┃ ┗ 📜 validator.js         # 검증
+┣ 📂 view
+┃ ┣ 📜 inputView.js         # 구매 금액/당첨 번호/보너스 번호 입력
+┃ ┣ 📜 outputView.js        # 발행 내역/당첨 통계/수익률 출력
+┃ ┣ 📜 App.js
+┃ ┗ 📜 index.js
+
+📂 __tests__                # 단위 및 통합 테스트
+┣ 📂 domain
+┃ ┗ 📜 LottoTest.js
+┣ 📂 services
+┃ ┣ 📜 judgeResult.test.js
+┃ ┣ 📜 lottoGenerator.test.js
+┃ ┗ 📜 statistics.test.js
+┣ 📂 utils
+┃ ┣ 📜 format.test.js
+┃ ┣ 📜 parser.test.js
+┃ ┣ 📜 validator.test.js
+┃ ┗ 📜 ApplicationTest.js
+```
+
+### 💬 짧은 회고
+
+- 전반적으로 “중복 줄이기”에 집중하며 구조를 단순화하기 위해 노력했다.
+- 중복 로직은 공통 유틸(asLottoNumbers, format/validator)로 분리·재사용했고,
+- 테스트는 test.each로 케이스를 테이블화해 중복을 줄였다.
+- 다만, 네이밍과 컨벤션을 초기에 더 엄격히 잡지 못해 관련 리팩터링이 많았던 점은 아쉽다.
