@@ -5,12 +5,12 @@ import { printIssuedLottos, printStatistics, printYieldPercent } from './view/ou
 import { aggregateResults, calculateYield } from './services/statistics.js';
 
 class App {
-  async #retryUntilValid(readFn) {
+  async #retryUntilValid(readOnce) {
     try {
-      return await readFn();
+      return await readOnce();
     } catch (error) {
       Console.print(error.message);
-      return this.#retryUntilValid(readFn);
+      return this.#retryUntilValid(readOnce);
     }
   }
 

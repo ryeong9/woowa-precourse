@@ -1,5 +1,5 @@
-import Lotto from '../../src/domain/Lotto';
-import { formatLottoLine, formatYieldPercent } from '../../src/utils/format';
+import Lotto from '../../src/domain/Lotto.js';
+import { formatLottoLine, formatYieldPercent } from '../../src/utils/format.js';
 
 describe('포맷 관련', () => {
   test.each([

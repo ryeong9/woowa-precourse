@@ -33,16 +33,16 @@ const validatePurchaseAmount = function validatePurchaseAmount(number) {
   }
 };
 
-const validateLottoNumbers = function validateLottoNumbers(winningNumbers) {
-  if (winningNumbers.length !== LOTTO.COUNT) {
+const validateLottoNumbers = function validateLottoNumbers(numbers) {
+  if (numbers.length !== LOTTO.COUNT) {
     throw new Error(LOTTO_ERROR_MESSAGES.INVALID_LENGTH);
   }
 
-  if (new Set(winningNumbers).size !== winningNumbers.length) {
+  if (new Set(numbers).size !== numbers.length) {
     throw new Error(LOTTO_ERROR_MESSAGES.DUPLICATED);
   }
 
-  winningNumbers.forEach((number) => {
+  numbers.forEach((number) => {
     validateInteger(number);
     validatePositive(number);
     validateNumberInRange(number, LOTTO.MIN, LOTTO.MAX);
